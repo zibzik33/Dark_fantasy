@@ -9,6 +9,7 @@ private:
 	int MaxHealth;
 	int Health;
 	int Damage;
+	bool is_died = false;
 // публично
 public:
 	// конструктор
@@ -52,14 +53,41 @@ public:
 	void EnemyDamage(int _enemyDamage)
 	{
 		Health -= _enemyDamage;
-		if (Health <= 0)
-		{
-			std::cout << "You died\n";
-		}
+		CheckDied();
+		DiedMessage();
 	}
 	// вывести статистики игрока 
 	void GetStat()
 	{
 		std::cout << "You have : \nName : " << Name << "\nHealth - " << Health << '/' << MaxHealth << "\nDamage - " << Damage << '\n';
+	}
+	// задать значение максимального здоровья
+	void SetMaxHealth(int _mhealth)
+	{
+		MaxHealth = _mhealth;
+		if (Health > MaxHealth)
+		{
+			Health = MaxHealth;
+		}
+		CheckDied();
+		DiedMessage();
+	}
+	// проверить умер ли игрок
+	bool CheckDied()
+	{
+		if (Health > 0)
+		{
+			return is_died;
+		}
+		is_died = true;
+		return is_died;
+	}
+	// сообщение о смерти
+	void DiedMessage()
+	{
+		if (is_died)
+		{
+			std::cout << "You died\n";
+		}
 	}
 };

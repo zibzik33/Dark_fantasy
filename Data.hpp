@@ -1,5 +1,50 @@
 #include "includes.hpp" 
 
+// Player location and position
+class Position {
+// private
+private:
+	// lvl in dangeon
+	int LvlDangeon{ 0 };
+	// wave of monsters
+	short MonstersWave{ 0 };
+// public
+public:
+	// constructor
+	Position() {
+		LvlDangeon = 0;
+		MonstersWave = 0;
+	}
+	// get lvl in dangeon
+	int GetLvl()
+	{
+		return LvlDangeon;
+	}
+	// get value wave of monsters
+	short GetWave()
+	{
+		return MonstersWave;
+	}
+	// up lvl in dangeon
+	int UpLvl()
+	{
+		LvlDangeon++;
+		return LvlDangeon;
+	}
+	// up wave of monsters
+	short UpWave()
+	{
+		MonstersWave++;
+		if (MonstersWave > 5)
+		{
+			std::cout << "\nYou are going down below\n" << "Your Lvl dangeon : " << UpLvl() << '\n';
+		}
+		MonstersWave = 1;
+		return MonstersWave;
+	}
+};
+
+
 // class for make player
 class Player{
 // private
@@ -93,43 +138,3 @@ public:
 		Damage = _damage;
 	}
 };
-
-// Player location and position
-class Position {
-// private
-private:
-	// lvl in dangeon
-	int LvlDangeon{0};
-	// wave of monsters
-	short MonstersWave{0};
-// public
-public:
-	// get lvl in dangeon
-	int GetLvl()
-	{
-		return LvlDangeon;
-	}
-	// get value wave of monsters
-	int GetWave()
-	{
-		return MonstersWave;
-	}
-	// up lvl in dangeon
-	int UpLvl()
-	{
-		LvlDangeon++;
-		return LvlDangeon;
-	}
-	// up wave of monsters
-	int UpWave()
-	{
-		MonstersWave++;
-		if (MonstersWave > 5)
-		{
-			std::cout << "\nYou are going down below\n" << "Your Lvl dangeon : " << UpLvl() << '\n';
-		}
-		MonstersWave = 1;
-		return MonstersWave;
-	}
-};
-

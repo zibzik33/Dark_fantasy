@@ -88,3 +88,6 @@ crashlytics-build.properties*
 *.command
 *.idb
 *.exe
+*.xml
+*.sarif
+*.txt

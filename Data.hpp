@@ -1,23 +1,20 @@
-#include "includes.hpp"
+#include "includes.hpp" 
 
 // class for make player
-class Player
-{
+class Player{
 // private
 private:
-	std::string Name;
-	int MaxHealth;
-	int Health;
-	int Damage;
-	bool is_died = false;
+	std::string Name{};
+	int MaxHealth{10};
+	int Health{10};
+	int Damage{1};
+	bool is_died{false};
+	Position position;
 // public
 public:
 	// constructor
-	Player(int _health, std::string _name) {
-		MaxHealth = _health;
+	Player(std::string _name) {
 		Name = _name;
-		Damage = 1;
-		Health = _health;
 	}
 	// get the player's health value
 	int GetHealth()
@@ -90,4 +87,49 @@ public:
 			std::cout << "You died\n";
 		}
 	}
+	// set player`s damage
+	void SetDamage(int _damage)
+	{
+		Damage = _damage;
+	}
 };
+
+// Player location and position
+class Position {
+// private
+private:
+	// lvl in dangeon
+	int LvlDangeon{0};
+	// wave of monsters
+	short MonstersWave{0};
+// public
+public:
+	// get lvl in dangeon
+	int GetLvl()
+	{
+		return LvlDangeon;
+	}
+	// get value wave of monsters
+	int GetWave()
+	{
+		return MonstersWave;
+	}
+	// up lvl in dangeon
+	int UpLvl()
+	{
+		LvlDangeon++;
+		return LvlDangeon;
+	}
+	// up wave of monsters
+	int UpWave()
+	{
+		MonstersWave++;
+		if (MonstersWave > 5)
+		{
+			std::cout << "\nYou are going down below\n" << "Your Lvl dangeon : " << UpLvl() << '\n';
+		}
+		MonstersWave = 1;
+		return MonstersWave;
+	}
+};
+

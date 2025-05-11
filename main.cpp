@@ -1,15 +1,29 @@
 #include "Data.hpp"
 
+//int AskPlayer()
+//{
+//	
+//}
+
 int main()
 {
-	Player player(25, "Zahar");
-	while (!player.CheckDied())
-	{
-		player.GetStat();
-		player.EnemyDamage(5);
-		std::cout << '\n';
+	bool is_game{true};
+	while(is_game)
+	{ 
+		std::string name{};
+
+		std::cout << "Enter name : ";
+		std::cin >> name;
+
+		Player player(name);
+
+		while (!player.CheckDied())
+		{
+
+		}
+
+		
 	}
-	
 
 	return 0;
 }
